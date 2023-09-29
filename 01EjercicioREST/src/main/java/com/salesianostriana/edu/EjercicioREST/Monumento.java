@@ -1,15 +1,19 @@
 package com.salesianostriana.edu.EjercicioREST;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.*;
 
-
+@Entity
 @Data
-@Getter
-@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Monumento {
 
+    @Id
+    @GeneratedValue
     private int id;
 
     private String codigoPais;
@@ -18,9 +22,9 @@ public class Monumento {
 
     private String nombreCiudad;
 
-    private Long latitud;
+    private Double latitud;
 
-    private Long longuitud;
+    private Double longuitud;
 
     private String nombreMonumento;
 
