@@ -22,7 +22,6 @@ public class DinoController {
         List<Dinosaurio> dinos = repo.findAll();
 
         if(dinos.isEmpty())
-
             return ResponseEntity.notFound().build();
 
         return ResponseEntity.ok(dinos);
@@ -32,14 +31,13 @@ public class DinoController {
     @GetMapping("/dinos/{id}")
     public Dinosaurio findById (@PathVariable int id){
 
-
         return repo.findById(id).orElseThrow(()-> new DinoNotFoundException(id));
 
     }
 
     @PostMapping("/dinos/")
     public ResponseEntity<Dinosaurio> create (@RequestBody Dinosaurio d){
-        Dinosaurio dino = repo.save(d);
+         repo.save(d);
 
         return ResponseEntity.status(201).body(d);
 
