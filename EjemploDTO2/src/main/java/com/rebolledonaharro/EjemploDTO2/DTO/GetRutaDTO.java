@@ -4,7 +4,7 @@ import com.rebolledonaharro.EjemploDTO2.Modal.Ruta;
 
 import java.util.List;
 
-public record GetRutaDTO(Long id, String nombre, String dificultad, String tiempo, List<GetMonumentoDTO> monumentos) {
+public record GetRutaDTO(Long id, String nombre, String dificultad, String tiempo, List<GetMonumentoEnRutaDTO> monumentos) {
 
     public static GetRutaDTO of(Ruta ruta){
 
@@ -14,7 +14,7 @@ public record GetRutaDTO(Long id, String nombre, String dificultad, String tiemp
                 ruta.getDificultad().name(),
                 Integer.toString(ruta.getTiempo()),
                 ruta.getMonumento().stream()
-                        .map(GetMonumentoDTO::of)
+                        .map(GetMonumentoEnRutaDTO::of)
                         .toList()
         );
 
