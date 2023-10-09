@@ -1,4 +1,4 @@
-package com.rebolledonaharro.EjemploDTO2.Modal;
+package com.rebolledonaharro.MonumentoJSONView.Modal;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

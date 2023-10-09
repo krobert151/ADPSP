@@ -1,6 +1,6 @@
-package com.rebolledonaharro.EjemploDTO2.Repository;
+package com.rebolledonaharro.MonumentoJSONView.Repository;
 
-import com.rebolledonaharro.EjemploDTO2.Modal.Categoria;
+import com.rebolledonaharro.MonumentoJSONView.Modal.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoriaRepository extends JpaRepository<Categoria,Long> {
