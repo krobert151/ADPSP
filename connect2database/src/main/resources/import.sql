@@ -1,0 +1,1 @@
+INSERT INTO Alumno (id, nombre) VALUES (1,'Manolo');
