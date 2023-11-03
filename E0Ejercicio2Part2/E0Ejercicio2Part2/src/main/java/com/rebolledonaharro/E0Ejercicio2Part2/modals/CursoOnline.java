@@ -15,6 +15,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Curso")
 public class CursoOnline {
 
     @ToString.Include
