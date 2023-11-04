@@ -83,36 +83,6 @@ public class InitData {
 
         productoRepo.save(p3);
 
-        LineaPedido linea1 = LineaPedido.builder()
-                .codLinea("adpsp1")
-                .producto(p1)
-                .precioUnitario(p1.getPrecio())
-                .cantidad(2)
-                .build();
-
-        lineaPedidoRepo.save(linea1);
-
-        LineaPedido linea2 = LineaPedido.builder()
-                .codLinea("adpsp2")
-                .producto(p2)
-                .precioUnitario(p2.getPrecio())
-                .cantidad(3)
-                .build();
-
-        lineaPedidoRepo.save(linea2);
-
-        LineaPedido linea3 = LineaPedido.builder()
-                .codLinea("adpsp2")
-                .producto(p3)
-                .precioUnitario(p3.getPrecio())
-                .cantidad(3)
-                .build();
-
-        lineaPedidoRepo.save(linea3);
-
-        Pedido pedido = Pedido.builder()
-                .fecha(LocalDate.now())
-                .build();
 
 
 

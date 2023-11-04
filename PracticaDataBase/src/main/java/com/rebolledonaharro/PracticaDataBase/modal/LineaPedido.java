@@ -2,8 +2,6 @@ package com.rebolledonaharro.PracticaDataBase.modal;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
@@ -15,12 +13,16 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@IdClass(LineaPedidoPK.class)
 public class LineaPedido {
 
-    @ToString.Include
-    @Id
-    @Column(nullable = false)
-    private String codLinea;
+   @Id
+   @ManyToOne
+   private Pedido pedido;
+
+   @Id
+   @GeneratedValue
+   private Long codLinea;
 
     @ToString.Include
     @Column(name = "precio_unitario", nullable = false)
@@ -34,10 +36,14 @@ public class LineaPedido {
     @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id")
-    @Fetch(FetchMode.JOIN)
-    private Pedido pedido;
+    public LineaPedidoPK getId(){
+        return new LineaPedidoPK(pedido, codLinea);
+    }
+
+    public void setId(LineaPedidoPK pk){
+        this.pedido=pk.getPedido();
+        this.codLinea=pk.getCodLinea();
+    }
 
     @Override
     public final boolean equals(Object o) {
@@ -47,11 +53,12 @@ public class LineaPedido {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         LineaPedido that = (LineaPedido) o;
-        return getCodLinea() != null && Objects.equals(getCodLinea(), that.getCodLinea());
+        return getPedido() != null && Objects.equals(getPedido(), that.getPedido())
+                && getCodLinea() != null && Objects.equals(getCodLinea(), that.getCodLinea());
     }
 
     @Override
     public final int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+        return Objects.hash(pedido, codLinea);
     }
 }
