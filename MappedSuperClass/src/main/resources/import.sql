@@ -1,0 +1,1 @@
+INSERT INTO Employee (nombre,puesto) VALUES ('manolo','pepino');
